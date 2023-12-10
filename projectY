@@ -1,0 +1,12 @@
+class circle:
+  color='blue'
+  circle = 3
+
+  def setcoords(self,x1,x2):
+    self.x1=x1
+    self.x2=x2
+
+
+O=circle()
+O.setcoords(1,1)
+  
