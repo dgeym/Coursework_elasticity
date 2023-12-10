@@ -1,2 +1,20 @@
-print('oh niceeeeeee')
-svo
+def f1(t,x1):
+  return exp(t)*x1
+def f2(t,x2):
+  return exp(t)*x2
+n=20
+x1(0)=-10
+while i<=n
+  h=20/n
+  k1=(h/2)*f1(t,x1(i-1))
+  k2=(h/2)*f1(t+h/2,x1(i-1)+k1)
+  k3=h*f1(t+h/2,x1(i-1)+k2)
+  k4=h*f1(t+h,x1(i-1)+k3)
+  x1(i)=x1(i-1)+(k1+2*k2+k3+k4/2)/3
+while i<=n
+  h=20/n
+  k1=(h/2)*f2(t,x2(i-1))
+  k2=(h/2)*f2(t+h/2,x2(i-1)+k1)
+  k3=h*f2(t+h/2,x2(i-1)+k2)
+  k4=h*f2(t+h,x2(i-1)+k3)
+  x2(i)=x2(i-1)+(k1+2*k2+k3+k4/2)/3
