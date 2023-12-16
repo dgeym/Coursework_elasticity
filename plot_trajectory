@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+from runge_kutta import x1_rk, x2_rk
+
+
+x_20 = 3
+coord_x = [0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3]
+for i in coord_x:
+    plt.plot(x1_rk(i), x2_rk(x_20), color = 'k')
+    plt.xlabel('x1')
+    plt.ylabel('x2')
+plt.show()
