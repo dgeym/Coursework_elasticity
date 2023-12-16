@@ -1,0 +1,5 @@
+import plot_trajectory
+import plot_streamlines
+
+plot_trajectory
+plot_streamlines
