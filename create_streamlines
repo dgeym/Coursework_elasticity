@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from def_func import f_x1, f_x2
+
+def Field(t):
+    X1 = np.array([-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5])
+    X2 = np.array([-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5])
+
+    i = 0
+    j = 0
+
+    Vx1 = np.zeros((11, 11))
+    Vx2 = np.zeros((11, 11))
+
+
+    while i < 11:
+        X2now = X2[i]
+        while j < 11:
+            X1now = X1[j]
+
+
+            Vx1[i][j] = f_x1(t, X1now)
+            Vx2[i][j] = f_x2(t, X2now)
+            j += 1
+        j = 0
+        i += 1
+    fig, ax = plt.subplots()
+    ax.quiver(X1, X2, Vx1, Vx2, color = 'b')
+    ax.streamplot(X1, X2, Vx1, Vx2, color = 'r')
+    plt.savefig('C:/Users/GDV/Downloads/Course/time_' + str(round(t, 1)) + '_second.jpeg', format='jpeg', dpi=500)
