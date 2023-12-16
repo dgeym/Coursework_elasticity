@@ -1,0 +1,33 @@
+import numpy as np
+from def_func import f_x1, f_x2
+
+h = 0.01
+n = 100
+
+a = np.array([
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0.5, 0, 0, 0],
+    [0, 0, 0.5, 0, 0],
+    [0, 0, 0, 1, 0],
+])
+b = np.array([0, 1/6, 2/6, 2/6, 1/6])
+c = np.array([0, 0, 0.5, 0.5, 1])
+
+def runge_kutta(x_r, h, n, f, a, b, c):
+    x_mass = [x_r]
+    t = 0.0001
+    for i in range(n):
+        x_1n = x_mass[i]
+        k1 = f(t, x_1n)
+        k2 = f(t + c[2] * h, x_1n + a[2, 1] * h * k1)
+        k3 = f(t + c[3] * h, x_1n + a[3, 1] * h * k1 + a[3, 2] * h * k2)
+        k4 = f(t + c[4] * h, x_1n + a[4, 1] * h * k1 + a[4, 2] * h * k2 + a[4, 3] * h * k3)
+        x_mass.append(x_1n + h * (k1 * b[1] + k2 * b[2] + k3 * b[3] + k4 * b[4]))
+        t += h
+    return x_mass
+
+def x1_rk(x0):
+    return runge_kutta(x0, h, n, f_x1, a, b, c)
+def x2_rk(x0):
+    return runge_kutta(x0, h, n, f_x2, a, b, c)
