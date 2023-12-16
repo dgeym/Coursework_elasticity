@@ -1,0 +1,8 @@
+from create_streamlines import Field
+
+Field(0.001)
+
+k = 0.1
+while k < 1:
+   Field(k)
+   k += 0.1
