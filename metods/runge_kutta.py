@@ -26,7 +26,7 @@ def runge_kutta(x_r, t, f):
     x_mass = (x_r + h * (k1 * b[1] + k2 * b[2] + k3 * b[3] + k4 * b[4]))
     return x_mass
 
-def integr_rungekutta(mat_point: MaterialPoint, t: float, times_num: int):
+def integr_rungekutta(mat_point: MaterialPoint, times_num: int):
     point_traj = PointTraj(mat_point.p_id, [], [])
     h = 0.01
 
