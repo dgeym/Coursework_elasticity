@@ -16,8 +16,7 @@ class PointTraj:
 
 
 class BodyTraj:
-    def __init__(self, b_tr_id: int = None, mat_points_tr: List[PointTraj] = None, time_grid: List[float] = None, radius=None, center_x=None, center_y=None):
-        self.b_tr_id = b_tr_id
+    def __init__(self, mat_points_tr: List[PointTraj] = None, time_grid: List[float] = None, radius=None, center_x=None, center_y=None):
         self.mat_points_tr = mat_points_tr
         self.time_grid = time_grid
         self.radius = radius
