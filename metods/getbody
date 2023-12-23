@@ -1,0 +1,11 @@
+from models.materialbody import MaterialBody
+
+
+def get_circle():
+    circle = MaterialBody()
+    circle.radius = 3
+    print("Введите центр х")
+    circle.center_x = float(input())
+    print("Введите центр y")
+    circle.center_y = float(input())
+    return circle
