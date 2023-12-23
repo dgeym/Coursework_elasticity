@@ -1,0 +1,16 @@
+from models.materialbody import MaterialBody
+from models.bodytraj import BodyTraj
+from metods.runge_kutta import integr_rungekutta
+
+
+def move_body(mat_body: MaterialBody, t: float, times_num: int):
+    body_tr = BodyTraj([], [])
+
+    for i in range(times_num):
+        body_tr.add_new_time(t*(i+1)/times_num)
+
+    for i in mat_body.mat_points:
+        new_point_tr = integr_rungekutta(i, times_num)
+        body_tr.add_new_point_tr(new_point_tr)
+
+    return body_tr
