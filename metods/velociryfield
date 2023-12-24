@@ -1,0 +1,10 @@
+import matplotlib.pyplot as plt
+from models.space import Space
+
+
+def velocityfield(vel_field: Space):
+    x = [i.coord_x for i in vel_field.sp_points]
+    y = [i.coord_y for i in vel_field.sp_points]
+    u = [i.vel_x for i in vel_field.sp_points]
+    v = [i.vel_y for i in vel_field.sp_points]
+    plt.quiver(x, y, u, v)
