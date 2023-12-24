@@ -1,5 +1,58 @@
-import plot_trajectory
-import plot_streamlines
+from metods.def_func import f_x1, f_x2
+from metods.spacepoints import create_space
+from metods.createvelocityfield import create_vel_field
+from metods.velociryfield import velocityfield
+from metods.getbody import get_circle
+from metods.createbody import create_circle
+from metods.movebody import move_body
+from metods.plotstreamlines import plot_streamlines
+from metods.runge_kutta import integr_rungekutta
+from metods.plotbodytraj import plot_body_trajectory
 
-plot_trajectory
-plot_streamlines
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+body = get_circle()
+mat_body = create_circle(body, 200)
+
+fig, ax = plt.subplots()
+ax.plot([i.coord_x1 for i in mat_body.mat_points], [i.coord_x2 for i in mat_body.mat_points], 'r--')
+plt.xlim([0, 8])
+plt.ylim([0, 8])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Материальное тело')
+plt.show()
+
+time = 2
+point_tr = integr_rungekutta(mat_body.mat_points[0], 100)
+fig, ax = plt.subplots()
+ax.plot([i.coord_x1 for i in point_tr.mat_point_tr], [i.coord_x2 for i in point_tr.mat_point_tr], 'ro')
+plt.xlim([0, 5])
+plt.ylim([0, 30])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Траектория материальной точки в момент времени ' + str(time) + ' секунды')
+plt.show()
+
+body_tr = move_body(mat_body, time, 50)
+plot_body_trajectory(body_tr)
+plt.xlim([0, 8])
+plt.ylim([0, 14])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Траектория тела')
+plt.show()
+
+timeee = [0.01, 0.5, 1.0, 1.5, 2.0, 2.5]
+for i in timeee:
+    const = np.linspace(0, 500, 25)
+    plot_streamlines(const, 0, 30, 500, i)
+    space_grid = create_space(body, 50, 30)
+    create_vel_field(space_grid, i, f_x1, f_x2)
+    velocityfield(space_grid)
+    plt.xlim([0, 25])
+    plt.ylim([0, 25])
+    plt.title('Поле скоростей и линии тока в момент времени ' + str(i) + ' секунд')
+    plt.savefig('C:/Users/GDV/Desktop/sobachiy_pashtet/time_' + str(i) + '_second.jpeg', format='jpeg', dpi=500)
