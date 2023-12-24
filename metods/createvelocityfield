@@ -1,0 +1,8 @@
+from models.space import Space
+
+
+def create_vel_field(space_grid: Space, time: float, f1, f2):
+    for i in space_grid.sp_points:
+        i.vel_x = f1(time, i.coord_x)
+        i.vel_y = f2(time, i.coord_y)
+        i.time = time
