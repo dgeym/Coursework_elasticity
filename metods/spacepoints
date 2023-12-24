@@ -1,0 +1,16 @@
+from models.space import Space
+from models.spacepoint import SpacePoint
+
+
+def create_space(body, grid_size: float, points_num: int):
+    sp_grid = Space([])
+    center_x = body.center_x
+    center_y = body.center_y
+    for j in range(points_num):
+        for i in range(points_num):
+            x = center_x - grid_size/2 + i*(grid_size/points_num)
+            y = center_y - grid_size/2 + j*(grid_size/points_num)
+            new_sp_point = SpacePoint((i+1)+j*points_num, x, y)
+            sp_grid.add_new_point(new_sp_point)
+
+    return sp_grid
