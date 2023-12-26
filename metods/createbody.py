@@ -5,8 +5,8 @@ import numpy as np
 
 
 def polar(p: float, phi: float):
-    rx = np.cos(phi) - p * np.sin(phi)
-    ry = p * np.cos(phi) + np.sin(phi)
+    rx = p * np.cos(phi)
+    ry = p * np.sin(phi)
     return rx, ry
 
 
