@@ -2,6 +2,11 @@ from models.materialbody import MaterialBody
 
 
 def get_circle():
+"""
+    Функция создания материального тела. Ввод координат центра происходит через консоль
+
+    :return: экземпляр класса MaterialBody - созданное материальное тело.
+    """
     circle = MaterialBody()
     circle.radius = 3
     print("Введите центр х")
