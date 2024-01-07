@@ -4,13 +4,13 @@ import numpy as np
 
 
 def streamlines(const: float, y: float, time: float):
-    x = const*np.fabs(y)**(-np.exp(time)/np.exp(time))
+    x = const*np.fabs(y)**(-np.exp(time)/np.exp(time)) 'Уравнение линий тока в нашем случае'
     return x
 
 
 def plot_streamlines(const: List[float], y_min: float, y_max: float, y_num: int, time: float):
     fig, ax = plt.subplots()
     y = np.linspace(y_min, y_max, y_num)
-    for i in range(len(const)):
+    for i in range(len(const)):               'Построение линий тока на заданном промежутке по оси ординат'
         x = streamlines(const[i], y, time)
         ax.plot(x, y, 'r-')
