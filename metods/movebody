@@ -4,13 +4,23 @@ from metods.runge_kutta import integr_rungekutta
 
 
 def move_body(mat_body: MaterialBody, t: float, times_num: int):
+"""
+    Функция заполнения двух массивов экземпляра класса BodyTraj - массива положений точек на каждой траектории и момента
+    времени, им соответствующего
+
+    :param mat_body: материальное тело
+    :param t: время
+    :param times_num: количество засечек по времени
+    :return: новое состояние материального тела
+    """
     body_tr = BodyTraj([], [])
 
     for i in range(times_num):
         body_tr.add_new_time(t*(i+1)/times_num)
 
     for i in mat_body.mat_points:
-        new_point_tr = integr_rungekutta(i, times_num)
-        body_tr.add_new_point_tr(new_point_tr)
+        new_point_tr = integr_rungekutta(i, times_num) 'Каждому экземпляру класса PointTraj определяется массив позиций точек траектории'
+                                                       'и соотвествующие им времена'
+        body_tr.add_new_point_tr(new_point_tr) 'Созданная траектория заносится в массив mat_points_tr класса BodyTraj'
 
     return body_tr
