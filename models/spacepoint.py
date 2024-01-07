@@ -1,5 +1,7 @@
 class SpacePoint:
     def __init__(self, p_id: int, coord_x=None, coord_y=None, vel_x=None, vel_y=None, time=None):
+        #Инициализация переменных экземпляра класса: id точки в пространстве, ее координат, скоростей
+                               #в момент времени time
         self.p_id = p_id
         self.coord_x = coord_x
         self.coord_y = coord_y
