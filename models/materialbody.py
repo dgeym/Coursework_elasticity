@@ -8,12 +8,10 @@ class MaterialBody:
     """
     def __init__(self, b_id: int, mat_points: List[MaterialPoint] = None):
         """
-        Конструктор класса материального тела. Инициализирует переменные класса.
+        Конструктор класса материального тела. Инициализирует переменную класса.
 
-        :param b_id: id материального тела
         :param mat_points: массив принадлежащих ему материальных точек
         """
-        self.b_id = b_id
         self.mat_points = mat_points
 
     def add_new_point(self, new_point: MaterialPoint):
