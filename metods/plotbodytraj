@@ -3,22 +3,29 @@ from models.bodytraj import BodyTraj
 
 
 def plot_body_trajectory(body_tr: BodyTraj):
+"""
+    Функция построения начального и конечного положения материального тела (до деформации
+    и после) для определенного случайного момента времени (для слежения за изменением формы и
+    положения материального тела)
+
+    :param body_tr: траектория материального тела
+    """
     fig, ax = plt.subplots()
 
     start_pos_x = []
     start_pos_y = []
-    for i in body_tr.mat_points_tr:
-        start_pos_x.append(i.mat_point_tr[0].coord_x1)
+    for i in body_tr.mat_points_tr:                      'Выделяются массивы координат начальных точек каждой из траекторий'
+        start_pos_x.append(i.mat_point_tr[0].coord_x1)    'и соединяются, обозначая начальное положение'
         start_pos_y.append(i.mat_point_tr[0].coord_x2)
     ax.plot(start_pos_x, start_pos_y, 'k-', linewidth = 6)
 
-    for j in body_tr.mat_points_tr:
-        ax.plot([i.coord_x1 for i in j.mat_point_tr], [i.coord_x2 for i in j.mat_point_tr], 'r-')
+    for j in body_tr.mat_points_tr:                                                               
+        ax.plot([i.coord_x1 for i in j.mat_point_tr], [i.coord_x2 for i in j.mat_point_tr], 'r-')  'Поточечно строится каждая из траекторий'
 
     last_pos_x = []
     last_pos_y = []
     size = len(body_tr.mat_points_tr[0].mat_point_tr)
-    for i in body_tr.mat_points_tr:
-        last_pos_x.append(i.mat_point_tr[size-1].coord_x1)
+    for i in body_tr.mat_points_tr:                          'Выделяются массивы координат конечных точек каждой из траекторий'
+        last_pos_x.append(i.mat_point_tr[size-1].coord_x1)     'и соединяются, обозначая конечное положение'
         last_pos_y.append(i.mat_point_tr[size-1].coord_x2)
     ax.plot(last_pos_x, last_pos_y, 'g-', linewidth = 6)
