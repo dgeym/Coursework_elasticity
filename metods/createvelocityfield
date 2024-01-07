@@ -2,7 +2,16 @@ from models.space import Space
 
 
 def create_vel_field(space_grid: Space, time: float, f1, f2):
-    for i in space_grid.sp_points:
-        i.vel_x = f1(time, i.coord_x)
-        i.vel_y = f2(time, i.coord_y)
+"""
+    Функция связывания уравнения скоростей по обеим осям с каждой материальной точкой в
+    данный момент времени
+
+    :param space_grid: сетка точек, экземпляр класса Space
+    :param time: время
+    :param f1: первая функция скорости
+    :param f2: вторая функция скорости
+    """
+    for i in space_grid.sp_points:    'Каждой точке, принадлежащей массиву sp_points экземпляра space_grid'
+        i.vel_x = f1(time, i.coord_x)  'приписывается новое свойство - значение скорости по x  и по y'
+        i.vel_y = f2(time, i.coord_y)   'и time, им соотвествующее'
         i.time = time
