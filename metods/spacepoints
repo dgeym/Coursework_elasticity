@@ -3,7 +3,15 @@ from models.spacepoint import SpacePoint
 
 
 def create_space(body, grid_size: float, points_num: int):
-    sp_grid = Space([])
+"""
+    Функция создания сетки для векторов поля скоростей
+
+    :param body: материальное тело
+    :param grid_size: размер сетки
+    :param points_num: количество точек
+    :return: сетка для векторов поля скоростей
+    """
+    sp_grid = Space([]) 'Экземпляр класса Space'
     center_x = body.center_x
     center_y = body.center_y
     for j in range(points_num):
@@ -11,6 +19,6 @@ def create_space(body, grid_size: float, points_num: int):
             x = center_x - grid_size/2 + i*(grid_size/points_num)
             y = center_y - grid_size/2 + j*(grid_size/points_num)
             new_sp_point = SpacePoint((i+1)+j*points_num, x, y)
-            sp_grid.add_new_point(new_sp_point)
+            sp_grid.add_new_point(new_sp_point)                     'Покрытие пространства равномерной сеткой точек'
 
     return sp_grid
