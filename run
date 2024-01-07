@@ -13,9 +13,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-body = get_circle()
-mat_body = create_circle(body, 200)
+body = get_circle() # создаем с помощью функции get_circle экземпляр класса MaterialBody
+mat_body = create_circle(body, 200)  # создаем массив точек, принадлежащих этому экземпляру
 
+# строим материальное тело
 fig, ax = plt.subplots()
 ax.plot([i.coord_x1 for i in mat_body.mat_points], [i.coord_x2 for i in mat_body.mat_points], 'r--')
 plt.xlim([0, 8])
@@ -25,6 +26,7 @@ plt.ylabel('y')
 plt.title('Материальное тело')
 plt.show()
 
+# строим траекторию правой материальной точки окружности и потом траекторию тела
 time = 2
 point_tr = integr_rungekutta(mat_body.mat_points[0], 100)
 fig, ax = plt.subplots()
@@ -45,6 +47,7 @@ plt.ylabel('y')
 plt.title('Траектория тела')
 plt.show()
 
+# строим поля скоростей и линии тока
 timeee = [0.01, 0.5, 1.0, 1.5, 2.0, 2.5]
 for i in timeee:
     const = np.linspace(0, 500, 25)
