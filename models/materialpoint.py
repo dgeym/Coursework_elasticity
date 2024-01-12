@@ -11,7 +11,6 @@ class MaterialPoint:
         :param coord_x2: вторая координата
         :param vel1: первая координата скорости
         :param vel2: вторая координата скорости
-        :param time: момент инициализации, в который рассматриваются местоположение и скорость
         """
         self.p_id = p_id
         self.coord_x1 = coord_x1
