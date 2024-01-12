@@ -6,7 +6,7 @@ class MaterialBody:
     """
     Класс материального тела
     """
-    def __init__(self, b_id: int, mat_points: List[MaterialPoint] = None):
+    def __init__(self, mat_points: List[MaterialPoint] = None):
         """
         Конструктор класса материального тела. Инициализирует переменную класса.
 
